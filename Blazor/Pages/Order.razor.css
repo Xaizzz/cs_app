@@ -1,0 +1,28 @@
+﻿field {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+.orderBlock {
+    display: flex;
+    flex-direction: column;
+}
+.label {
+    width: 200px;
+}
+.valueField {
+    width: 400px;
+}
+.artOrders {
+    display: flex;
+    flex-direction: column;
+}
+.orderTag {
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #8b008bff;
+    border-radius: 8px;
+    background-color: #ff00ff44;
+}
+
+

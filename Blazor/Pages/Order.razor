@@ -1,0 +1,91 @@
+﻿@page "/order/{orderId}"
+@using Blazor.Services
+
+@code {
+
+    [Parameter]
+    public string OrderId { get; set; }
+
+    public List<Data.Models.Order>? Orders { get; set; }
+    public Data.Models.Order? CurrentOrder { get; set; }
+
+    [Inject]
+    private IOrderProvider ordersProvider { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        CurrentOrder = await ordersProvider.GetOne(Int32.Parse(OrderId));
+        Orders = await ordersProvider.GetAll();
+        Console.WriteLine(CurrentOrder);
+        base.OnInitialized();
+    }
+
+}
+
+
+<h3>Информация о товаре</h3>
+
+@if (CurrentOrder != null)
+{
+    <div class="orderBlock">
+        <div class="field">
+            <label class="label">ID</label> <input class="form-control valueField" type="text" value="@CurrentOrder.Id" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Сумма заказа</label> <input class="form-control valueField" type="text" value="@CurrentOrder.OrderAmount" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Имя</label> <input class="form-control valueField" type="text" value="@CurrentOrder.Customer" aria-label="Disabled input example" disabled readonly>
+        </div>
+        
+
+    </div>
+
+    <h3>Товары</h3>
+    <table class="table">
+        <thead>
+        <th>Название</th>
+        <th>Производитель</th>
+        <th>Дата обслуживания</th>
+        <th>Описание</th>
+        <th>Характеристики</th>
+        <th>Цена</th>
+        </thead>
+        <tbody>
+        @foreach (var art in CurrentOrder.Items)
+        {
+            <tr>
+                <td>@art.Name</td>
+                <td>@art.CompanyName</td>
+                <td>@art.DateOfService</td>
+                <td>@art.Description</td>
+                <td>@art.Parameters</td>
+                <td>@art.Cost</td>
+
+
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <h3>Клиенты</h3>
+    <table class="table">
+        <thead>
+        <th>Имя</th>
+        <th>Паспорт</th>
+        <th>Номер телефона</th>
+        <th>Почта</th>
+        </thead>
+        <tbody>
+        @foreach (var tic in CurrentOrder.Customers)
+        {
+            <tr >
+                <td>@tic.Name</td>
+                <td>@tic.PassportDetails</td>
+                <td>@tic.PhoneNumber</td>
+                <td>@tic.Email</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

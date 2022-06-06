@@ -1,0 +1,75 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = browser
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = true
+build_property.IncludeAllContentForSelfExtract = 
+build_property.RootNamespace = Blazor
+build_property.RootNamespace = Blazor
+build_property.ProjectDir = C:\Users\iliae\RiderProjects\cs_app\cs_app\Blazor\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\iliae\RiderProjects\cs_app\cs_app\Blazor
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/Pages/Index2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/Pages/Index3.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/Components/OrdersList1/CustomersList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xPcmRlcnNMaXN0MVxDdXN0b21lcnNMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-7yr8q3um0x
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/Components/OrdersList1/ItemsList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xPcmRlcnNMaXN0MVxJdGVtc0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-csot93txja
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/Components/OrdersList1/OrdersList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xPcmRlcnNMaXN0MVxPcmRlcnNMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-84bjtbdkn6
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/Pages/Customer.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-j8rmqfr3w5
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/Pages/Item.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSXRlbS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-pd87n4idrw
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/Pages/Order.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-oqhgascidm
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-r0yqwuvdyg
+
+[C:/Users/iliae/RiderProjects/cs_app/cs_app/Blazor/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-6hj6azdo60

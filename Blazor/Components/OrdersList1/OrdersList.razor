@@ -1,0 +1,44 @@
+﻿@using Blazor.Data.Models
+@using Blazor.Services
+@inject NavigationManager _navigationManager
+
+
+<h1>Список заказов</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Сумма заказа</th>
+        <th>Покупатель</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (_orders != null)
+    {
+        @foreach (var order in _orders)
+        {
+            <tr  @onclick="()=>ToItem(order)">
+                <td>@order.Id</td>
+                <td>@order.OrderAmount</td>
+                <td>@order.Customer</td>
+
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+
+@code {
+    private List<Order>? _orders;
+    [Inject]
+    private IOrderProvider OrdersProvider { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        _orders = await OrdersProvider.GetAll();
+    }
+    public void ToItem(Order order)
+    {
+        _navigationManager.NavigateTo($"/Order/{order.Id}");
+    }
+}

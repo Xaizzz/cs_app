@@ -1,0 +1,86 @@
+﻿@page "/item/{itemId}"
+@using Blazor.Services
+
+@code {
+
+    [Parameter]
+    public string ItemId { get; set; }
+
+    public List<Data.Models.Item> Items { get; set; }
+    public Data.Models.Item? CurrentItem { get; set; }
+
+    [Inject]
+    private IItemProvider itemsProvider { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        CurrentItem = await itemsProvider.GetOne(Int32.Parse(ItemId));
+        Items = await itemsProvider.GetAll();
+        Console.WriteLine(CurrentItem);
+        base.OnInitialized();
+    }
+
+}
+
+
+<h3>Информация о товаре</h3>
+
+@if (CurrentItem != null)
+{
+    <div class="itemBlock">
+        <div class="field">
+            <label class="label">ID</label> <input class="form-control valueField" type="text" value="@CurrentItem.Id" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Цена</label> <input class="form-control valueField" type="text" value="@CurrentItem.Cost" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Описание</label> <input class="form-control valueField" type="text" value="@CurrentItem.Description" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Наличие</label> <input class="form-control valueField" type="text" value="@CurrentItem.QuantityInStock" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Название</label> <input class="form-control valueField" type="text" value="@CurrentItem.Name" aria-label="Disabled input example" disabled readonly>
+        </div>
+    </div>
+
+    <h3>Клиенты</h3>
+    <table class="table">
+        <thead>
+        <th>Имя</th>
+        <th>Паспорт</th>
+        <th>Номер телефона</th>
+        <th>Почта</th>
+        </thead>
+        <tbody>
+        @foreach (var art in CurrentItem.Customers)
+        {
+            <tr>
+                <td>@art.Name</td>
+                <td>@art.PassportDetails</td>
+                <td>@art.PhoneNumber</td>
+                <td>@art.Email</td>
+               
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <h3>Заказы</h3>
+    <table class="table">
+        <thead>
+        <th >Сумма</th>
+        <th >Покупатель</th>
+        </thead>
+        <tbody>
+        @foreach (var tic in CurrentItem.Orders)
+        {
+            <tr >
+                <td>@tic.OrderAmount</td>
+                <td>@tic.Customer</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

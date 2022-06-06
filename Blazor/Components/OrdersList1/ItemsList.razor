@@ -1,0 +1,54 @@
+﻿@using Blazor.Data.Models
+@using Blazor.Services
+@inject NavigationManager _navigationManager
+
+
+<h1>Список товаров</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Производитель</th>
+        <th>Описание</th>
+        <th>Параметры</th>
+        <th>Дата обслуживания</th>
+        <th>Цена</th>
+        <th>Наличие</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (_items != null)
+    {
+       @foreach (var item in _items)
+        {
+            <tr  @onclick="()=>ToItem(item)">
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.CompanyName</td>
+                <td>@item.Description</td>
+                <td>@item.Parameters</td>
+                <td>@item.DateOfService</td>
+                <td>@item.Cost</td>
+                <td>@item.QuantityInStock</td>
+
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+
+@code {
+    private List<Item>? _items;
+    [Inject]
+    private IItemProvider ItemsProvider { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        _items = await ItemsProvider.GetAll();
+    }
+    public void ToItem(Item item)
+    {
+        _navigationManager.NavigateTo($"/Item/{item.Id}");
+    }
+}

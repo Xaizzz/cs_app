@@ -1,0 +1,26 @@
+field[b-j8rmqfr3w5] {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+.customerBlock[b-j8rmqfr3w5] {
+    display: flex;
+    flex-direction: column;
+}
+.label[b-j8rmqfr3w5] {
+    width: 200px;
+}
+.valueField[b-j8rmqfr3w5] {
+    width: 400px;
+}
+.artCustomers[b-j8rmqfr3w5] {
+    display: flex;
+    flex-direction: column;
+}
+.customerTag[b-j8rmqfr3w5] {
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #8b008bff;
+    border-radius: 8px;
+    background-color: #ff00ff44;
+}

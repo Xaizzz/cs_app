@@ -1,0 +1,103 @@
+﻿@page "/Item/{ItemId}"
+@using BlazorApp1.Data.Services
+
+
+<PageTitle>Items</PageTitle>
+
+<ItemsList/>
+
+<h3>Item</h3>
+@if (CurrentItem != null)
+{
+    <div class="itemBlock">
+        <div class="field">
+            <label class="label">Идентификатор</label> <input class="form-control valueField" type="text" value="@CurrentItem.Id" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">ФИО</label> <input class="form-control valueField" type="text" value="@CurrentItem.Cost" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Звание</label> <input class="form-control valueField" type="text" value="@CurrentItem.Description" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Должность</label> <input class="form-control valueField" type="text" value="@CurrentItem.Name" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Должность</label> <input class="form-control valueField" type="text" value="@CurrentItem.Parameters" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Должность</label> <input class="form-control valueField" type="text" value="@CurrentItem.QuantityInStock" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Должность</label> <input class="form-control valueField" type="text" value="@CurrentItem.CompanyName" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+                    <label class="label">Должность</label> <input class="form-control valueField" type="text" value="@CurrentItem.DateOfService" aria-label="Disabled input example" disabled readonly>
+                </div>
+    </div>
+    <h3>Заказы</h3>
+    <table class="table">
+        <thead>
+        <th >Заголовок</th>
+        <th >Ключевые слова</th>
+        <th >Аннотация</th>
+        <th>Авторы</th>
+        </thead>
+        <tbody>
+        @foreach (var art in CurrentItem.Customers)
+        {
+            <tr >
+                <td>@art.Email</td>
+                <td>@art.Name</td>
+                <td>@art.PassportDetails</td>
+                <td>@art.PhoneNumber</td>
+                <td>
+                    <div class="artItems">
+                        @foreach (var artItem in Items)
+                        {
+                            if (artItem.Orders.Any(x => x.Id == art.Id))
+                            {
+                                <span class="itemTag">@artItem.Name</span>
+                            }
+                        }
+                    </div >
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <h3>Покупатели</h3>
+    <table class="table">
+        <thead>
+        <th >Название</th>
+        <th >Адрес</th>
+        <th >Направление деятельности</th>
+        </thead>
+        <tbody>
+        @foreach (var aff in CurrentItem.Orders)
+        {
+            <tr >
+                <td>@aff.Customer</td>
+                <td>@aff.OrderAmount</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    [Parameter]
+    public string ItemId { get; set; }
+    public List<Data.Models.Item> Items { get; set; }
+    public Data.Models.Item? CurrentItem { get; set; }
+    [Inject]
+    private IItemProvider itemsProvider { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        CurrentItem = await itemsProvider.GetOne(Int32.Parse(ItemId));
+        Items = await itemsProvider.GetAll();
+        Console.WriteLine(CurrentItem);
+        base.OnInitialized();
+    }
+}

@@ -1,0 +1,94 @@
+﻿@page "/customer/{customerId}"
+@using Blazor.Services
+
+@code {
+
+    [Parameter]
+    public string CustomerId { get; set; }
+
+    public List<Data.Models.Customer> Customers { get; set; }
+    public Data.Models.Customer? CurrentCustomer { get; set; }
+
+    [Inject]
+    private ICustomerProvider customersProvider { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        CurrentCustomer = await customersProvider.GetOne(Int32.Parse(CustomerId));
+        Customers = await customersProvider.GetAll();
+        Console.WriteLine(CurrentCustomer);
+        base.OnInitialized();
+    }
+
+}
+
+
+<h3>Информация о товаре</h3>
+
+@if (CurrentCustomer != null)
+{
+    <div class="customerBlock">
+        <div class="field">
+            <label class="label">ID</label> <input class="form-control valueField" type="text" value="@CurrentCustomer.Id" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Почта</label> <input class="form-control valueField" type="text" value="@CurrentCustomer.Email" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Имя</label> <input class="form-control valueField" type="text" value="@CurrentCustomer.Name" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="field">
+            <label class="label">Паспорт</label> <input class="form-control valueField" type="text" value="@CurrentCustomer.PassportDetails" aria-label="Disabled input example" disabled readonly>
+        </div><div class="field">
+                          <label class="label">Телефон</label> <input class="form-control valueField" type="text" value="@CurrentCustomer.PhoneNumber" aria-label="Disabled input example" disabled readonly>
+                      </div>
+        
+       
+    </div>
+
+    <h3>Товары</h3>
+    <table class="table">
+        <thead>
+        <th>Название</th>
+        <th>Производитель</th>
+        <th>Дата обслуживания</th>
+        <th>Описание</th>
+        <th>Характеристики</th>
+        <th>Цена</th>
+        </thead>
+        <tbody>
+        @foreach (var art in CurrentCustomer.Items)
+        {
+            <tr>
+                <td>@art.Name</td>
+                <td>@art.CompanyName</td>
+                <td>@art.DateOfService</td>
+                <td>@art.Description</td>
+                <td>@art.Parameters</td>
+                <td>@art.Cost</td>
+                
+                
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <h3>Заказы</h3>
+    <table class="table">
+        <thead>
+        <th >ID</th>
+        <th >Сумма</th>
+        <th >Покупатель</th>
+        </thead>
+        <tbody>
+        @foreach (var tic in CurrentCustomer.Orders)
+        {
+            <tr >
+                <td>@tic.Id</td>
+                <td>@tic.OrderAmount</td>
+                <td>@tic.Customer</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

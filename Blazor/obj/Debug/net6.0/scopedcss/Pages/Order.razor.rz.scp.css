@@ -1,0 +1,28 @@
+field[b-oqhgascidm] {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+.orderBlock[b-oqhgascidm] {
+    display: flex;
+    flex-direction: column;
+}
+.label[b-oqhgascidm] {
+    width: 200px;
+}
+.valueField[b-oqhgascidm] {
+    width: 400px;
+}
+.artOrders[b-oqhgascidm] {
+    display: flex;
+    flex-direction: column;
+}
+.orderTag[b-oqhgascidm] {
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #8b008bff;
+    border-radius: 8px;
+    background-color: #ff00ff44;
+}
+
+

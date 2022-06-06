@@ -1,0 +1,26 @@
+.field[b-devmfwyv7r] {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+.itemBlock[b-devmfwyv7r] {
+    display: flex;
+    flex-direction: column;
+}
+.label[b-devmfwyv7r] {
+    width: 200px;
+}
+.valueField[b-devmfwyv7r] {
+    width: 400px;
+}
+.artItems[b-devmfwyv7r] {
+    display: flex;
+    flex-direction: column;
+}
+.itemTag[b-devmfwyv7r] {
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #8b008bff;
+    border-radius: 8px;
+    background-color: #ff00ff44;
+}
